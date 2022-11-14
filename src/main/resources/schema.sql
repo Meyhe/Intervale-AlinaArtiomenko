@@ -1,0 +1,63 @@
+DROP schema IF EXISTS `bookshelf`;
+CREATE schema IF NOT EXISTS `bookshelf`;
+use `bookshelf`;
+
+DROP TABLE IF EXISTS `AUTHOR`;
+CREATE TABLE `AUTHOR` (
+	`ID_AUTHOR` int NOT NULL AUTO_INCREMENT,
+	`NAME` varchar(45),
+	`SURNAME` varchar(45),
+	PRIMARY KEY (`ID_AUTHOR`)
+);
+
+
+DROP TABLE IF EXISTS `PUBLISHING_HOUSE`;
+CREATE TABLE `PUBLISHING_HOUSE` (
+	`ID_PUBLISHING_HOUSE` int NOT NULL AUTO_INCREMENT,
+	`NAME` varchar(45),
+	PRIMARY KEY (`ID_PUBLISHING_HOUSE`)
+);
+
+DROP TABLE IF EXISTS `TYPE_PRINTED_PRODUCT`;
+CREATE TABLE `TYPE_PRINTED_PRODUCT` (
+	`ID_TYPE` int NOT NULL AUTO_INCREMENT,
+	`NAME` varchar(45),
+	PRIMARY KEY (`ID_TYPE`)
+);
+
+DROP TABLE IF EXISTS `PUBLICATION`;
+CREATE TABLE `PUBLICATION` (
+	`ID` int NOT NULL AUTO_INCREMENT,
+	`ID_TYPE` int,
+	`COUNT_PAGE` int,
+	`NAME` varchar(45),
+	`ID_AUTHOR` int,
+	`DATE_PUBLICATION` date,
+	`ID_PUBLISHING_HOUS` int,
+	PRIMARY KEY (`ID`)
+);
+
+INSERT INTO `AUTHOR` VALUES
+     (1,'Stanislav', 'Lem'),
+     (2,'Allan', 'Poe'),
+     (3,'J.K.', 'Rowling'),
+     (4,'Frank', 'Herbert');
+
+INSERT INTO `PUBLISHING_HOUSE` VALUES
+     (1,'AST'),
+     (2,'Rosman'),
+     (3,'Eksmo');
+
+INSERT INTO `TYPE_PRINTED_PRODUCT` VALUES
+     (1,'Book'),
+     (2,'Newspaper'),
+     (3,'Magazine');
+
+INSERT INTO `PUBLICATION` VALUES
+     (1,1,182,'Solaris',1,'2011-01-01',2),
+     (2,1,456,'Dune',4,'2018-01-01',1),
+     (3,1,350,'Harry Potter',3,'2002-01-01',2);
+
+
+
+
